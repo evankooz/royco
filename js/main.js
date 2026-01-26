@@ -67,6 +67,9 @@ function setActiveNavLink() {
         }
     });
 }
+// Set Current Year in Footer
+document.getElementById("copyright-year").textContent =
+    new Date().getFullYear();
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {

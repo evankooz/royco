@@ -95,6 +95,7 @@ main {
 .nav-link {
     text-decoration: none;
     color: var(--text-dark);
+    font-size: 1.1rem;
     font-weight: 500;
     position: relative;
     transition: var(--transition);
@@ -398,7 +399,7 @@ main {
 
 .product-category {
     font-size: 0.85rem;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
