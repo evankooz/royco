@@ -68,51 +68,6 @@ function renderCategories() {
     `).join('');
 }
 
-function filterByCategory(categoryName) {
-    selectedCategory = selectedCategory === categoryName ? null : categoryName;
-    renderProductsFiltered();
-    updateCategoryCards();
-}
-
-function updateCategoryCards() {
-    const cards = document.querySelectorAll('.category-card');
-    cards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (selectedCategory === category) {
-            card.classList.add('active');
-            card.querySelector('.category-badge').textContent = 'Selected';
-        } else {
-            card.classList.remove('active');
-            card.querySelector('.category-badge').textContent = 'View';
-        }
-    });
-}
-
-function renderProductsFiltered() {
-    const productsGrid = document.getElementById('productsGrid');
-    const filterTitle = document.getElementById('filterTitle');
-    const clearBtn = document.getElementById('clearFilterBtn');
-
-    if (!productsGrid) {
-        return;
-    }
-
-    const filtered = selectedCategory 
-        ? allProducts.filter(p => p.category === selectedCategory)
-        : allProducts;
-
-    // Update title
-    if (filterTitle) {
-        filterTitle.textContent = selectedCategory 
-            ? `${selectedCategory} Products`
-            : 'All Products';
-    }
-
-    // Show/hide clear button
-    if (clearBtn) {
-        clearBtn.style.display = selectedCategory ? 'block' : 'none';
-    }
-
     // Render products
     let html = '';
     for (let product of filtered) {
@@ -136,14 +91,8 @@ function renderProductsFiltered() {
     }
 
     productsGrid.innerHTML = html;
-}
 
-// Clear filter function
-function clearFilter() {
-    selectedCategory = null;
-    renderProductsFiltered();
-    updateCategoryCards();
-}
+
 
 // Initialize on page load
 function initializeProducts() {
