@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Royco Distributors | Industrial Lubricants & Equipment Solutions</title>
+    <meta
+        name="description"
+        content="Royco Distributors is New England's trusted partner for high-quality industrial lubricants, chemicals, absorbents, and equipment solutions."
+    />
+    <meta
+        name="keywords"
+        content="Royco Distributors, industrial lubricants, chemicals, coolants, absorbents, racing fuels, New England distributors, industrial supply"
+    />
+    <meta name="author" content="Royco Distributors, Inc." />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Royco Distributors | Industrial Solutions Provider" />
+    <meta property="og:description" content="Delivering top-quality industrial lubricants, chemicals, and equipment solutions across New England." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Royco Distributors | Industrial Solutions Provider" />
+    <meta name="twitter:description" content="New England's premier source for industrial lubricants, chemicals, and absorbents." />
+    
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Royco Distributors Logo" class="logo-img">
+                
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="pages/products.html" class="nav-link">Products</a></li>
+                <li><a href="pages/about.html" class="nav-link">About</a></li>
+                <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Slideshow -->
+        <section class="hero-slideshow">
+            <div class="slideshow-container">
+                <div class="slide fade" style="background-image: url('images/ss1.png'); background-size: cover; background-position: center;">
+                    <div class="slide-content">
+                        <h1>Welcome to Royco Distributors</h1>
+                        <p>Your Trusted Partner for Industrial Solutions</p>
+                    </div>
+                </div>
+                <div class="slide fade" style="background-image: url('images/ss2.png'); background-size: cover; background-position: center;">
+                    <div class="slide-content">
+                        <h1>Premium Lubricants & Chemicals</h1>
+                        <p>Quality Products for New England Industries</p>
+                    </div>
+                </div>
+                <div class="slide fade" style="background-image: url('images/ss3.png'); background-size: cover; background-position: center;">
+                    <div class="slide-content">
+                        <h1>Expert Service & Support</h1>
+                        <p>30+ Years of Excellence</p>
+                    </div>
+                </div>
+                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+            </div>
+            <div class="dots">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </section>
+
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-content">
+                <h1>Welcome to Royco Distributors</h1>
+                <p class="subtitle">New England's Premier Industrial Solutions Provider</p>
+                <p class="intro-text">
+                    Since our beginning, we've been delivering top-quality industrial solutions 
+                    and lubricants to businesses across New England. Our commitment to excellence 
+                    and customer satisfaction has made us a trusted partner in the industry.
+                </p>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="featured-products">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Explore our most popular industrial solutions</p>
+            </div>
+            <div id="productGrid" class="product-grid"></div>
+            
+        </section>
+        
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Find Your Solution?</h2>
+                <p>Browse our catalog or contact us for personalized service</p>
+                <div class="cta-buttons">
+                    <a href="pages/products.html" class="btn-primary">View Products</a>
+                    <a href="pages/contact.html" class="btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <div class="contact-info">
+                    <p><a href="tel:+19786328151">(978) 632-8151</a></p>
+                    <p><a href="mailto:info@roycodistributors.com">info@roycodistributors.com</a></p>
+                    <p>211 Colony Rd<br>Gardner, MA 01440</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pages/products.html">Products</a></li>
+                    <li><a href="pages/about.html">About</a></li>
+                    <li><a href="pages/contact.html">Contact</a></li>
+                    <li><a href="pages/privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Business Hours</h3>
+                <p>Monday - Friday: 8AM - 5PM<br>Saturday - Sunday: Closed</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Royco Distributors. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/slideshow.js"></script>
+</body>
+</html>
