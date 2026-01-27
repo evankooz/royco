@@ -1,27 +1,47 @@
 // ==============================
-// Products Database - Featured Products
+// Global Data Namespace
 // ==============================
-const products = [
-    { id: 1, name: 'Premium Motor Oil', category: 'Lubricants', description: 'Premium synthetic motor oil for superior engine protection', image: 'havoline.png' },
-    { id: 2, name: 'Industrial Grease', category: 'Lubricants', description: 'Heavy-duty industrial grease for maximum durability', image: 'excavator.png' },
-    { id: 3, name: 'Industrial Solvents', category: 'Chemicals', description: 'Professional-grade industrial solvents for cleaning and degreasing', image: 'logo-oildri-o.png' },
-    { id: 4, name: 'Cleaning Solutions', category: 'Chemicals', description: 'Effective cleaning solutions for industrial equipment', image: 'purusoil.png' },
-];
+window.RoycoData = {
+    products: [
+        {
+            id: 1,
+            name: 'Premium Motor Oil',
+            category: 'Lubricants',
+            description: 'Premium synthetic motor oil for superior engine protection',
+            image: 'havoline.png'
+        },
+        {
+            id: 2,
+            name: 'Industrial Grease',
+            category: 'Lubricants',
+            description: 'Heavy-duty industrial grease for maximum durability',
+            image: 'excavator.png'
+        },
+        {
+            id: 3,
+            name: 'Industrial Solvents',
+            category: 'Chemicals',
+            description: 'Professional-grade industrial solvents for cleaning and degreasing',
+            image: 'logo-oildri-o.png'
+        },
+        {
+            id: 4,
+            name: 'Cleaning Solutions',
+            category: 'Chemicals',
+            description: 'Effective cleaning solutions for industrial equipment',
+            image: 'purusoil.png'
+        }
+    ]
+};
 
-const productCategories = [
-    { id: 1, name: 'Lubricants', description: 'Motor oils and gear lubricants' },
-    { id: 2, name: 'Coolants', description: 'Industrial coolants and fluids' },
-    { id: 3, name: 'Hydraulics', description: 'Hydraulic and pressure fluids' },
-];
-
 // ==============================
-// Render Products (safe)
+// Featured Products (HOME PAGE)
 // ==============================
-function renderProducts(filteredProducts = products) {
+function renderFeaturedProducts() {
     const productGrid = document.getElementById('productGrid');
-    if (!productGrid) return;
+    if (!productGrid || !window.RoycoData) return;
 
-    productGrid.innerHTML = filteredProducts.map(product => `
+    productGrid.innerHTML = window.RoycoData.products.map(product => `
         <div class="product-card">
             <div class="product-image"
                 style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -42,13 +62,16 @@ function renderProducts(filteredProducts = products) {
 }
 
 // ==============================
-// Mobile Menu Toggle (safe)
+// Mobile Menu (GLOBAL)
 // ==============================
 function setupMobileMenu() {
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
 
     if (!menuToggle || !navMenu) return;
+
+    if (menuToggle.dataset.bound) return;
+    menuToggle.dataset.bound = 'true';
 
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
@@ -64,27 +87,26 @@ function setupMobileMenu() {
 }
 
 // ==============================
-// Set Active Nav Link (safe)
+// Active Nav Link
 // ==============================
 function setActiveNavLink() {
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const navLinks = document.querySelectorAll('.nav-link');
     if (!navLinks.length) return;
 
-    const currentPage =
-        window.location.pathname.split('/').pop() || 'index.html';
+    let currentPage = window.location.pathname.split('/').pop();
+
+    // Handle root path "/"
+    if (!currentPage) currentPage = 'index.html';
 
     navLinks.forEach(link => {
         const href = link.getAttribute('href')?.split('/').pop();
-        if (href === currentPage) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
+
+        link.classList.toggle('active', href === currentPage);
     });
 }
 
 // ==============================
-// Set Current Year in Footer (SAFE FIX)
+// Footer Year
 // ==============================
 function setCopyrightYear() {
     const yearEl = document.getElementById('copyright-year');
@@ -94,10 +116,10 @@ function setCopyrightYear() {
 }
 
 // ==============================
-// Initialize on Page Load
+// Init
 // ==============================
 document.addEventListener('DOMContentLoaded', () => {
-    renderProducts();
+    renderFeaturedProducts(); // only runs on pages with #productGrid
     setupMobileMenu();
     setActiveNavLink();
     setCopyrightYear();

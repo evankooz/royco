@@ -1,5 +1,5 @@
 // Products page specific functionality
-const productCategories = [
+const productCategoriesData = [
     { id: 1, name: 'Lubricants', description: 'Motor oils and gear lubricants' },
     { id: 2, name: 'Coolants', description: 'Industrial coolants and fluids' },
     { id: 3, name: 'Chemicals', description: 'Industrial solvents and absorbents' },
@@ -59,7 +59,7 @@ function renderCategories() {
     const categoryGrid = document.getElementById('categoryGrid');
     if (!categoryGrid) return;
 
-    categoryGrid.innerHTML = productCategories.map(category => `
+    categoryGrid.innerHTML = productCategoriesData.map(category => `
         <div class="category-card" data-category="${category.name}" onclick="filterByCategory('${category.name}')">
             <h3>${category.name}</h3>
             <p>${category.description}</p>
