@@ -77,8 +77,8 @@ async function submitForm(event) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
 
-        // Send to Formspree
-        const response = await fetch('https://formspree.io/f/xjknakvj', {
+        // Send to FormSubmit
+        const response = await fetch('https://formsubmit.co/evan.kuczer@kuczer.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
