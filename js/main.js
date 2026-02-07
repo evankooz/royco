@@ -2,6 +2,11 @@
 // Global Data Namespace
 // ==============================
 window.RoycoData = {
+    categories: [
+        { id: 1, name: 'Lubricants', description: 'Motor oils and gear lubricants' },
+        { id: 2, name: 'Coolants', description: 'Industrial coolants and fluids' },
+        { id: 3, name: 'Chemicals', description: 'Industrial solvents and absorbents' }
+    ],
     products: [
         {
             id: 1,
@@ -30,6 +35,27 @@ window.RoycoData = {
             category: 'Chemicals',
             description: 'Effective cleaning solutions for industrial equipment',
             image: 'purusoil.png'
+        },
+        {
+            id: 5,
+            name: 'Extended Life Antifreeze',
+            category: 'Coolants',
+            description: 'Long-lasting coolant protection for extended intervals',
+            image: ''
+        },
+        {
+            id: 6,
+            name: 'Heavy Duty Coolants',
+            category: 'Coolants',
+            description: 'High-performance coolants for demanding industrial applications',
+            image: 'servicepro.png'
+        },
+        {
+            id: 7,
+            name: 'Universal Absorbent Pads',
+            category: 'Chemicals',
+            description: 'Versatile absorbent pads for spill containment and cleanup',
+            image: ''
         }
     ]
 };
@@ -49,7 +75,7 @@ function renderFeaturedProducts() {
         if (product.image) {
             imageHtml = `<img src="${imageUrl}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">`;
         } else {
-            imageHtml = `<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; width: 100%; height: 100%;">📦</div>`;
+            imageHtml = `<div class="placeholder-image">📦</div>`;
         }
         
         html += `<div class="product-card">
@@ -63,6 +89,29 @@ function renderFeaturedProducts() {
     }
     
     productGrid.innerHTML = html;
+}
+
+// ==============================
+// Render Product Card Helper
+// ==============================
+function renderProductCard(product, imagePath = 'images/') {
+    const imageUrl = product.image ? `${imagePath}${product.image}` : '';
+    let imageHtml = '';
+    
+    if (product.image) {
+        imageHtml = `<img src="${imageUrl}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">`;
+    } else {
+        imageHtml = `<div class="placeholder-image">📦</div>`;
+    }
+    
+    return `<div class="product-card">
+        <div class="product-image">${imageHtml}</div>
+        <div class="product-info">
+            <div class="product-category">${product.category}</div>
+            <div class="product-name">${product.name}</div>
+            <div class="product-description">${product.description}</div>
+        </div>
+    </div>`;
 }
 
 // ==============================

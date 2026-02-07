@@ -1,5 +1,6 @@
 // Slideshow functionality
 let slideIndex = 1;
+let slideshowInterval = null;
 
 function changeSlide(n) {
     showSlide(slideIndex += n);
@@ -41,7 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(slideIndex);
     
     const heroSlideshow = document.querySelector('.hero-slideshow');
-    if (heroSlideshow) {
-        setInterval(autoSlide, 5000);
+    if (heroSlideshow && !slideshowInterval) {
+        slideshowInterval = setInterval(autoSlide, 5000);
+    }
+});
+
+// Clean up interval when leaving page
+window.addEventListener('beforeunload', () => {
+    if (slideshowInterval) {
+        clearInterval(slideshowInterval);
+        slideshowInterval = null;
     }
 });

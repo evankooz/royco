@@ -53,54 +53,51 @@
                 </div>
 
                 <div class="info-section">
-                    <h3>Email</h3>
-                    <p><a href="mailto:info@roycodistributors.com">info@roycodistributors.com</a></p>
-                </div>
-
-                <div class="info-section">
                     <h3>Business Hours</h3>
                     <p>Monday - Friday: 8AM - 5PM<br>Saturday - Sunday: Closed</p>
                 </div>
             </div>
 
             <!-- Contact Form -->
-            
-
-                <form class="contact-info" target="_blank" action="https://formsubmit.co/f4f0bdf1277675ef6af126d048321218" method="POST">
-                <div class="form-group">
-                <div class="form-row">
-                    <div class="form-group">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+            <div class="contact-right">
+                <form target="_blank" action="https://formsubmit.co/f4f0bdf1277675ef6af126d048321218" method="POST" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                            <span id="nameError" class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                            <span id="emailError" class="error-message"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="tel" name="tel" class="form-control" placeholder="Phone Number">
+                            <span id="telError" class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="company" class="form-control" placeholder="Company Name" required>
+                            <span id="companyError" class="error-message"></span>
+                        </div>
                     </div>
                     <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                        <textarea name="message" class="form-control" placeholder="Your Message" rows="6" required></textarea>
+                        <span id="messageError" class="error-message"></span>
                     </div>
-                    <div class="form-group">
-                    <input type="tel" name="tel" class="form-control" placeholder="Phone Number" required>
-                    </div>
-                    <div class="form-group">
-                    <input type="text" name="company" class="form-control" placeholder="Company Name" required>
-                    </div>
-                </div>
-                </div>
-                <div class="form-group">
-                <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Inquiry</button>
+                    <button type="submit" class="btn btn-primary">Send Inquiry</button>
                 </form>
             </div>
-            <div class="contact-content">
-                <div class="map-container">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2938.148622805147!2d-71.94872932180087!3d42.57336782159563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3e201760d052b%3A0xa696a867e9734e81!2sRoyco%20Distributors%20Inc!5e0!3m2!1sen!2sus!4v1769458736570!5m2!1sen!2sus"
-                        allowfullscreen
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
+
+            <!-- Map -->
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2938.148622805147!2d-71.94872932180087!3d42.57336782159563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3e201760d052b%3A0xa696a867e9734e81!2sRoyco%20Distributors%20Inc!5e0!3m2!1sen!2sus!4v1769458736570!5m2!1sen!2sus"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
-
-
         </div>
     </main>
 
@@ -111,7 +108,6 @@
                 <h3>Contact</h3>
                 <div class="contact-info">
                     <p><a href="tel:+19786328151">(978) 632-8151</a></p>
-                    <p><a href="mailto:info@roycodistributors.com">info@roycodistributors.com</a></p>
                     <p>211 Colony Rd<br>Gardner, MA 01440</p>
                 </div>
             </div>
@@ -131,7 +127,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Royco Distributors. All rights reserved.</p>
+            <p>&copy; <span id="copyright-year"></span> Royco Distributors. All rights reserved.</p>
         </div>
     </footer>
 
