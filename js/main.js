@@ -41,24 +41,28 @@ function renderFeaturedProducts() {
     const productGrid = document.getElementById('productGrid');
     if (!productGrid || !window.RoycoData) return;
 
-    productGrid.innerHTML = window.RoycoData.products.map(product => `
-        <div class="product-card">
-            <div class="product-image"
-                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                       display: flex;
-                       align-items: center;
-                       justify-content: center;
-                       color: white;
-                       font-size: 3rem;">
-                📦
-            </div>
+    let html = '';
+    for (let product of window.RoycoData.products.slice(0, 3)) {
+        const imageUrl = product.image ? `images/${product.image}` : '';
+        let imageHtml = '';
+        
+        if (product.image) {
+            imageHtml = `<img src="${imageUrl}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">`;
+        } else {
+            imageHtml = `<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; width: 100%; height: 100%;">📦</div>`;
+        }
+        
+        html += `<div class="product-card">
+            <div class="product-image">${imageHtml}</div>
             <div class="product-info">
                 <div class="product-category">${product.category}</div>
                 <div class="product-name">${product.name}</div>
                 <div class="product-description">${product.description}</div>
             </div>
-        </div>
-    `).join('');
+        </div>`;
+    }
+    
+    productGrid.innerHTML = html;
 }
 
 // ==============================
