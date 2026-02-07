@@ -1,114 +1,36 @@
-// Contact page form handling
-function validateForm(formData) {
-    const errors = {};
-    
-    if (!formData.name.trim()) {
-        errors.name = 'Name is required';
-    }
-    
-    if (!formData.email.trim()) {
-        errors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-        errors.email = 'Please enter a valid email';
-    }
-    
-    if (formData.phone && !/^[\d\s\-\+\(\)]*$/.test(formData.phone)) {
-        errors.phone = 'Please enter a valid phone number';
-    }
-    
-    if (!formData.message.trim()) {
-        errors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-        errors.message = 'Message must be at least 10 characters';
-    }
-    
-    return errors;
-}
+    // Form submission
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = {
+                name: this.querySelector('input[placeholder="Your Name"]').value,
+                email: this.querySelector('input[placeholder="Your Email"]').value,
+                department: this.querySelector('input[placeholder="Department Name"]').value,
+                message: this.querySelector('textarea[placeholder="Message"]').value
+            };
 
-function displayErrors(errors) {
-    // Clear all errors first
-    document.querySelectorAll('.error-message').forEach(el => {
-        el.textContent = '';
-    });
+            // Log form data (in a real app, this would be sent to a server)
+            console.log('Form Submitted:', formData);
 
-    // Display new errors
-    Object.keys(errors).forEach(field => {
-        const errorElement = document.getElementById(`${field}Error`);
-        if (errorElement) {
-            errorElement.textContent = errors[field];
-        }
-    });
-}
+            // Show success message
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = '✓ Message Sent!';
+            submitBtn.style.backgroundColor = '#10b981';
 
-function clearErrors() {
-    document.querySelectorAll('.error-message').forEach(el => {
-        el.textContent = '';
-    });
-}
+            // Reset form
+            this.reset();
 
-async function submitForm(event) {
-    event.preventDefault();
-
-    const form = document.getElementById('contactForm');
-    if (!form) return;
-
-    // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        company: document.getElementById('company').value,
-        message: document.getElementById('message').value,
-    };
-
-    // Validate
-    const errors = validateForm(formData);
-    if (Object.keys(errors).length > 0) {
-        displayErrors(errors);
-        return;
-    }
-
-    clearErrors();
-
-    const statusMessage = document.getElementById('statusMessage');
-    const submitBtn = form.querySelector('button[type="submit"]');
-
-    try {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-
-        // Send to FormSubmit
-        const response = await fetch('https://formsubmit.co/evan.kuczer@kuczer.com', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
+            // Restore button after 3 seconds
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.backgroundColor = '';
+            }, 3000);
         });
-
-        if (!response.ok) {
-            throw new Error('Failed to submit form');
-        }
-
-        // Success
-        statusMessage.textContent = 'Thank you! Your message has been sent successfully.';
-        statusMessage.className = 'status-message success';
-        form.reset();
-
-        setTimeout(() => {
-            statusMessage.textContent = '';
-            statusMessage.className = 'status-message';
-        }, 5000);
-
-    } catch (error) {
-        console.error('Form error:', error);
-        statusMessage.textContent = 'Unable to send message. Please try again later or call (978) 632-8151.';
-        statusMessage.className = 'status-message error';
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
     }
-}
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
